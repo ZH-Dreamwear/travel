@@ -1,5 +1,12 @@
 <template>
-  <div>icons</div>
+  <div class="icons">
+  	<div class="icon">
+  	  <div class="icon-img">
+  	  	<img class="icon-content" src="http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png">
+  	  </div>
+  	  <p class="desc">热门景点</p>
+  	</div>
+  </div>
 </template>
 
 <script>
@@ -8,6 +15,38 @@
   }  	
 </script>
 
-<style lang="stylus">
-	
+<style lang="stylus" scoped>
+	@import '~styles/varibles.styl'
+	.icons
+	  overflow: hidden
+	  height: 0
+	  padding-bottom: 50%
+	  .icon
+	  	position: relative
+	  	height: 0
+	  	float: left
+	  	width: 25%
+	  	padding-bottom: 25%
+	  	.icon-img
+	  	  box-sizing: border-box
+	  	  padding: .1rem
+	  	  position: absolute
+	  	  top: 0
+	  	  left: 0
+	  	  right: 0
+	  	  bottom: .44rem
+	  	  .icon-content
+	  	    height: 100%
+	  	    display: block
+	  	    margin: 0 auto
+	  	.desc
+	  	  position: absolute
+	  	  left: 0
+	  	  right: 0
+	  	  bottom: 0
+	  	  height: .44rem
+	  	  line-height: .44rem
+	  	  text-align:center
+	  	  color:$darkTextColor
+
 </style>
