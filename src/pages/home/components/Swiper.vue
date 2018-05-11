@@ -17,6 +17,7 @@ export default {
   props: {
   	list: Array
   },
+  //在子组件中data必须是函数形式
   data() {
   	return {
   		swiperOption: {
