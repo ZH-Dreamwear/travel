@@ -2,8 +2,8 @@
 	<div>
 		<city-header></city-header>
 		<city-search></city-search>
-		<city-list :hot="hotCities" :cities="allCities"></city-list>
-		<city-alphabet :cities="allCities"></city-alphabet>
+		<city-list :hot="hotCities" :cities="allCities" :letter="letter"></city-list>
+		<city-alphabet :cities="allCities" @change="handleLetterChange"></city-alphabet>
 	</div>
 </template>
 <script>
@@ -23,7 +23,8 @@ export default {
 	data () {
 		return {
 			hotCities: [],
-			allCities: {}
+			allCities: {},
+			letter: ''
 		}
 	},
 	methods:{
@@ -42,7 +43,11 @@ export default {
   			console.log(data.cities);
   			this.allCities = data.cities
   		}
-  	}
+  	},
+  	//从Alph子组件获取到的letter值，再通过父组件传递给List子组件
+  	handleLetterChange (letter) {
+  		this.letter = letter
+  		}
 	},
 	mounted () {
 		this.getCityInfo()

@@ -17,7 +17,7 @@
           </div>
         </div>
       </div>
-      <div class="area" v-for="(item, key) of cities" :key="key">
+      <div class="area" v-for="(item, key) of cities" :key="key" :ref="key">
         <div class="title border-topbottom">{{key}}</div>
         <div class="item-list" v-for="inneritem of item" :key="inneritem.id">
           <div class="item border-bottom" >
@@ -34,7 +34,20 @@ export default {
   name: 'CityList',
   props: {
     hot: Array,
-    cities: Object
+    cities: Object,
+    //从父组件接收的letter值
+    letter: String
+  },
+  //使用watch监听letter值的变化
+  watch: {
+    letter () {
+      if (this.letter) {
+        //使用ref获取DOM结点
+        const element = this.$refs[this.letter][0]
+        //滚动到对应的结点或元素
+        this.scroll.scrollToElement(element)
+      }
+    }
   },
   mounted () {
     this.scroll = new Bscroll(this.$refs.wrapper)
