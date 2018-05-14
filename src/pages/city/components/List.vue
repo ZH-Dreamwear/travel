@@ -30,7 +30,7 @@
 </template>
 <script>
 import Bscroll from 'better-scroll'
-import { mapState } from 'vuex'
+import { mapState,mapMutations } from 'vuex'
 export default {
   name: 'CityList',
   props: {
@@ -47,10 +47,11 @@ export default {
   methods: {
     handlechangeCityClick (city) {
       // this.$store.dispatch('changeCity', city)
-      this.$store.commit('changeCity', city)
+      this.changeCity(city)
       //点击选择城市之后跳转到首页
       this.$router.push('/')
-    }
+    },
+    ...mapMutations(['changeCity'])
   },
   //使用watch监听letter值的变化
   watch: {

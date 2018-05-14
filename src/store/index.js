@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2018-05-12 23:59:47
 * @Last Modified by:   Administrator
-* @Last Modified time: 2018-05-15 01:55:53
+* @Last Modified time: 2018-05-15 02:57:48
 */
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -18,10 +18,10 @@ export default new Vuex.Store({
 	// 		ctx.commit('changeCity', city)
 	// 	} 	
 	// },
-	mutations,
-	getters: {
-		doubleCity (state) {
-			return state.city + ' ' + state.city
-		}
-	}
+	mutations
+	// getters: {
+	// 	doubleCity (state) {
+	// 		return state.city + ' ' + state.city
+	// 	}
+	// }
 })
