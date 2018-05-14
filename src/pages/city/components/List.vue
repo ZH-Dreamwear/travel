@@ -5,7 +5,7 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">{{this.$store.state.city}}</div>
+            <div class="button">{{this.currentCity}}</div>
           </div>
         </div>
       </div>
@@ -19,8 +19,8 @@
       </div>
       <div class="area" v-for="(item, key) of cities" :key="key" :ref="key">
         <div class="title border-topbottom">{{key}}</div>
-        <div class="item-list" v-for="inneritem of item" :key="inneritem.id">
-          <div class="item border-bottom" >
+        <div class="item-list" v-for="inneritem of item" :key="inneritem.id" @click="handlechangeCityClick(inneritem.name)"> 
+          <div class="item border-bottom">
             {{inneritem.name}}
           </div>
         </div>
@@ -30,6 +30,7 @@
 </template>
 <script>
 import Bscroll from 'better-scroll'
+import { mapState } from 'vuex'
 export default {
   name: 'CityList',
   props: {
@@ -38,9 +39,17 @@ export default {
     //从父组件接收的letter值
     letter: String
   },
+  computed: {
+    ...mapState({
+      currentCity: 'city'
+    })
+  },
   methods: {
     handlechangeCityClick (city) {
-      this.$store.dispatch('changeCity', city)
+      // this.$store.dispatch('changeCity', city)
+      this.$store.commit('changeCity', city)
+      //点击选择城市之后跳转到首页
+      this.$router.push('/')
     }
   },
   //使用watch监听letter值的变化
