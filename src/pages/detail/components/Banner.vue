@@ -1,29 +1,32 @@
 <template>
 	<div>
 		<div class="banner" @click="showGallaryClick">
-		  <img class="banner-img" src="http://img1.qunarzz.com/sight/p0/1503/df/df52ada1fcc788c7.water.jpg_r_800x800_276cad3a.jpg" />
+		  <img class="banner-img" :src="this.bannerImg" />
 		  <div class="banner-info">
 		    <div class="banner-tittle">
-		      珠海长隆
+		      {{this.sightName}}
 		    </div>
 		    <div class="banner-number">
 		      <span class="iconfont banner-icon">&#xe692;</span>
-		      16
+		      {{this.bannerImg.length}}
 		    </div>
 		  </div>
     	</div>
-    	<common-gallary :imgs="imgs" @close="handleGallaryClose" v-show="showGallary"></common-gallary>
+    	<common-gallary :imgs="bannerImgs" @close="handleGallaryClose" v-show="showGallary"></common-gallary>
 	</div>
 </template>
 <script>
 import CommonGallary from 'common/gallary/Gallary'
 export default {
 	name: 'DetailBanner',
+	props: {
+		bannerImg: String,
+		sightName: String,
+		bannerImgs: Array
+	},
 	data () {
 		return {
 			showGallary: false,
-			imgs: ['http://img1.qunarzz.com/sight/p0/1503/d9/d998f866d28033ed.water.jpg_r_800x800_950923c0.jpg',
-			'http://img1.qunarzz.com/sight/p0/1609/b2/b2ddf39699fdbb76a3.water.jpg_r_800x800_f0855d8e.jpg']
 		}
 	},
 	methods:{

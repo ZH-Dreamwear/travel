@@ -23,5 +23,9 @@ export default new Router({
       name: 'Detail',
       component: Detail
     }
-  ]
+  ],
+    //每次进入新的页面X，Y轴的位置都为0，也就是置顶效果。
+    scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })
